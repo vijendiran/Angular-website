@@ -1,0 +1,44 @@
+<div class="formBg">
+<div class="container contact-form">
+    <div class="contact-image">
+        <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+    </div>
+    <form [formGroup]="userForm">
+        <h3>Drop Us a Message</h3>
+       <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input class="form-control" formControlName="name" type="text">
+                </div>
+                <div *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)" class="alert alert-danger">
+                    <div *ngIf="userForm.controls['name'].errors.required">
+                      Name is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" formControlName="email"  value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" formControlName="phone"  value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" class="btnContact" value="Send Message"  [disabled]="!userForm.valid"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <textarea name="txtMsg" class="form-control" placeholder="Your Message *" formControlName="msg" style="width: 100%; height: 150px;"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+<div>
+    <pre>
+        <code>{{ userForm.value | json}}</code>
+        <code>{{ userForm.valid | json }}</code>
+    </pre>
+</div>
